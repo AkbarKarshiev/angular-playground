@@ -1,0 +1,31 @@
+<h4>{{userCardsLoading$ | async}}</h4>
+<ol *ngIf="userCardsArray$ | async as cards; else elseBlock">
+  <li *ngFor="let card of cards; let i = index">
+    <div>
+      <span style="margin-right: 10px">
+        {{i + 1}}.  Card Name: {{card.masked_pan}}
+      </span>
+      Card Type: {{card.type}}
+    </div>
+    <div>
+      Balance: {{card.balance | number}}
+    </div>
+    <div *ngIf="card.type === 'uzcard'">
+      IsLoading: {{uzcardCardsLoading$ | async}}
+    </div>
+    <div *ngIf="card.type === 'humo'">
+      IsLoading: {{humoCardsLoading$ | async}}
+    </div>
+    <div *ngIf="card.type === 'atto'">
+      IsLoading: {{attoCardsLoading$ | async}}
+    </div>
+  </li>
+</ol>
+<ng-template #elseBlock>
+  <p>Loading...</p>
+</ng-template>
+<button class="btn btn-success" (click)="onFetchBalances()">
+  Refresh Balance
+</button>
+
+<p>{{userCardsErrorMsg$ | async}}</p>

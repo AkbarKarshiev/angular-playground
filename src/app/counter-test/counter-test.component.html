@@ -1,0 +1,32 @@
+  <h3>Counter is: {{counter$ | async}}</h3>
+<div class="mb-3">
+  <button
+    class="btn btn-primary mr-2"
+    (click)="onIncrement()"
+  >
+    Increment
+  </button>
+  <button
+    class="btn btn-danger mr-2"
+    (click)="onDecrement()"
+  >
+    Decrement
+  </button>
+  <button
+    class="btn btn-warning"
+    (click)="onReset()"
+  >
+    Reset
+  </button>
+</div>
+<div class="input-group mx-auto mb-3" style="width: 40%">
+  <input type="text" class="form-control" [(ngModel)]="valueToAdd">
+  <div class="input-group-append">
+    <button
+      class="btn btn-primary"
+      (click)="onAddValue()"
+    >
+      Add to counter
+    </button>
+  </div>
+</div>
