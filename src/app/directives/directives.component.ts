@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './directives.component.html',
 })
 export class DirectivesComponent implements OnInit {
-
+  class = 'red';
   constructor() { }
 
   ngOnInit(): void {

@@ -1,0 +1,16 @@
+<div class="container" style="margin-bottom: 30px">
+    <h1>
+        trackby in ngFor directive
+    </h1>
+    <ul>
+        <li *ngFor="let movie of movies; let i = index; trackBy: trackByFn">
+            {{i}}. {{ movie.title }} - {{movie.director}} <button (click)="remove(i)">remove</button>
+        </li>
+    </ul>
+
+    <button (click)="Refresh()">Refresh</button> <br>
+
+    Title     : <input type="text" [(ngModel)]="mTitle">
+    Director  : <input type="text" [(ngModel)]="mDirector">
+    <button  (click)="addMovie()">Add</button>
+</div>
