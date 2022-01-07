@@ -16,9 +16,22 @@
 
 <div class="container">
     <h1>
-        Custom structural directive
+        Custom structural directives
     </h1>
-    <p appCustomStructuralDirective="red">
-        text
+    <button (click)="toggleText()" style="margin-bottom: 20px">
+        Toggle Text Below
+    </button>
+    <p *appCustomStructuralDirective="show">
+        Text inside custom directive applied tag
     </p>
+    <div style="margin-bottom: 20px">
+        <button appCustomToggleDirective>
+            Click To Toggle
+        </button>
+    </div>
+    <div style="margin-bottom: 20px">
+        <button appCustomTooltipDirective="Here is Tip">
+            Show Tip
+        </button>
+    </div>
 </div>

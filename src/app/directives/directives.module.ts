@@ -6,8 +6,10 @@ import { NgClassComponent } from './ng-class/ng-class.component';
 import { NgStyleComponent } from './ng-style/ng-style.component';
 import { DirectivesComponent } from './directives.component';
 import { NgForTrackbyComponent } from './ng-for-trackby/ng-for-trackby.component';
-import { CustomAttributeDirectiveDirective } from './custom-directive/custom-attribute-directive.directive';
-import { CustomStructuralDirectiveDirective } from './custom-directive/custom-structural-directive.directive';
+import { CustomAttributeDirectiveDirective } from './custom-directives/custom-attribute-directive.directive';
+import { CustomStructuralDirectiveDirective } from './custom-directives/custom-structural-directive.directive';
+import { CustomToggleDirectiveDirective } from './custom-directives/custom-toggle-directive.directive';
+import { CustomTooltipDirectiveDirective } from './custom-directives/custom-tooltip-directive.directive';
 
 @NgModule({
   declarations: [
@@ -17,6 +19,8 @@ import { CustomStructuralDirectiveDirective } from './custom-directive/custom-st
     NgForTrackbyComponent,
     CustomAttributeDirectiveDirective,
     CustomStructuralDirectiveDirective,
+    CustomToggleDirectiveDirective,
+    CustomTooltipDirectiveDirective,
   ],
   imports: [
     CommonModule,
