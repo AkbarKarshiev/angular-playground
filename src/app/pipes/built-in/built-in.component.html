@@ -1,0 +1,64 @@
+<h2>Built-in pipes</h2>
+<h3>DatePipe</h3>
+<p>short: {{ toDate | date: 'short' }}</p>
+<p>fullDate: {{ toDate | date: 'fullDate' }}</p>
+<p>longDate: {{ toDate | date: 'longDate' }}</p>
+<p>mediumDate: {{ toDate | date: 'mediumDate' }}</p>
+<p>shortDate: {{ toDate | date: 'shortDate' }}</p>
+<p>mediumTime: {{ toDate | date: 'mediumTime' }}</p>
+<p>dd.MM.y: {{ toDate | date: 'dd.MM.y' }}</p>
+<p>dd.MM.y HH:mm: {{ toDate | date: 'dd.MM.y HH:mm' }}</p>
+<h3>UpperCasePipe & LowerCasePipe</h3>
+<p>Uppercase: {{ msg | uppercase }}</p>
+<p>Lowercase: {{ msg | lowercase }}</p>
+<h3>SlicePipe</h3>
+<p>Slice 7:20: {{ msg | slice: 7 : 20 }}</p>
+<p>Slice -9: {{ msg | slice: -9 }}</p>
+<h3>DecimalPipe / NumberPipe</h3>
+<p>Unformatted: {{ num }}</p>
+<p>Formatted 3.1-2: {{ num | number: '3.1-2' }}</p>
+<p>Formatted 7.1-5: {{ num | number: '7.1-5' }}</p>
+<h3>PercentPipe</h3>
+<p>Unformatted: {{ per }}</p>
+<p>Formatted: {{ per | number }}</p>
+<p>Formatted 1.2-2: {{ per | number: '1.2-2' }}</p>
+<h3>CurrencyPipe</h3>
+<p>Unformatted: {{ cur }}</p>
+<p>Formatted: {{ per | currency }}</p>
+<p>Formatted UZS true 4.2-2: {{ per | currency: 'UZS' : true : '4.2-2' }}</p>
+<h3>KeyValuePipe</h3>
+<ul>
+  <li *ngFor="let item of obj | keyvalue">
+    {{ item.key }} ---> {{ item.value }}
+  </li>
+</ul>
+<ul>
+  <li *ngFor="let item of obj | keyvalue : orderByValueDesc ">
+    {{item.key}} ---> {{item.value}}</li>
+</ul>
+<h3>Using pipe inside component</h3>
+<p>{{ componentDate }}</p>
+<h3>AsyncPipe</h3>
+<!--<p *ngIf="obsValue | async; else elseBlock">-->
+<!--  {{ obsValue | async }}-->
+<!--</p>-->
+<!--<ng-template #elseBlock>-->
+<!--  <p>Observable is loading. Please Wait</p>-->
+<!--</ng-template>-->
+<p *ngIf="(obsValue | async) as obsVal; else elseBlock">
+  {{ obsVal }}
+</p>
+<ng-template #elseBlock>
+  <p>Observable is loading. Please Wait</p>
+</ng-template>
+<h3>AsyncPipe with ngFor</h3>
+<ul *ngIf="(hounds | async) as houndsList">
+  <li *ngFor="let breed of houndsList.message">
+    {{ breed }}
+  </li>
+</ul>
+<hr>
+<h3>CustomPipe: Temperature Converter</h3>
+<p>Temperature converted from C to F: {{ tempInC | tempConverter: 'F' }}</p>
+<p>Temperature converted from F to C: {{ tempInF | tempConverter: 'C' }}</p>
+

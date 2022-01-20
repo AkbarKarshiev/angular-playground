@@ -1,0 +1,22 @@
+import { Pipe, PipeTransform } from '@angular/core';
+
+@Pipe({
+  name: 'tempConverter'
+})
+export class TempConverterPipe implements PipeTransform {
+
+  transform(value: number, unit: string): string {
+    if (value && !isNaN(value)) {
+      if (unit === 'C' || unit === 'c') {
+        let temperature = (value - 32) / 1.8;
+        return temperature.toFixed(2);
+      } else if (unit === 'F' || unit === 'f') {
+        let temperature = (value * 1.8) + 32;
+        return temperature.toFixed(2);
+      }
+    }
+
+    return null;
+  }
+
+}

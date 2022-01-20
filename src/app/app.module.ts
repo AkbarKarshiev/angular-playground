@@ -23,6 +23,8 @@ import { CounterTestComponent } from './counter-test/counter-test.component';
 import { CounterNameComponent } from './counter-name/counter-name.component';
 import { environment } from "../environments/environment.prod";
 import { DirectivesModule } from "./directives/directives.module";
+import { PipesModule } from "./pipes/pipes.module";
+
 
 @NgModule({
   declarations: [
@@ -49,9 +51,10 @@ import { DirectivesModule } from "./directives/directives.module";
     EffectsModule.forRoot(appEffects),
     FormsModule,
     DirectivesModule,
+    PipesModule,
   ],
   providers: [
-    {provide: HTTP_INTERCEPTORS, useClass: ApiInterceptorService, multi: true},
+    { provide: HTTP_INTERCEPTORS, useClass: ApiInterceptorService, multi: true },
   ],
   bootstrap: [AppComponent]
 })
