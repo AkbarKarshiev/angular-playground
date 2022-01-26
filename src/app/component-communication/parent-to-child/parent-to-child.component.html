@@ -1,0 +1,7 @@
+<h2>Parent to child interaction</h2>
+<button (click)="increment()">Increment</button>
+<button (click)="decrement()" style="margin-bottom: 15px">decrement</button>
+<app-p2c-child-component
+  [Count]="count"
+>
+</app-p2c-child-component>

@@ -24,6 +24,7 @@ import { CounterNameComponent } from './counter-name/counter-name.component';
 import { environment } from "../environments/environment.prod";
 import { DirectivesModule } from "./directives/directives.module";
 import { PipesModule } from "./pipes/pipes.module";
+import { ComponentCommunicationModule } from "./component-communication/component-communication.module";
 
 
 @NgModule({
@@ -52,6 +53,7 @@ import { PipesModule } from "./pipes/pipes.module";
     FormsModule,
     DirectivesModule,
     PipesModule,
+    ComponentCommunicationModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ApiInterceptorService, multi: true },
