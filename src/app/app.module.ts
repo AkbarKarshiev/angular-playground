@@ -25,6 +25,7 @@ import { environment } from "../environments/environment.prod";
 import { DirectivesModule } from "./directives/directives.module";
 import { PipesModule } from "./pipes/pipes.module";
 import { ComponentCommunicationModule } from "./component-communication/component-communication.module";
+import { ComponentLifecycleHooksModule } from "./component-lifecycle-hooks/component-lifecycle-hooks.module";
 
 
 @NgModule({
@@ -54,6 +55,7 @@ import { ComponentCommunicationModule } from "./component-communication/componen
     DirectivesModule,
     PipesModule,
     ComponentCommunicationModule,
+    ComponentLifecycleHooksModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ApiInterceptorService, multi: true },
