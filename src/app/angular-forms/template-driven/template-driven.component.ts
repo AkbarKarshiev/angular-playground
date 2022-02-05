@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { NgForm } from "@angular/forms";
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormGroup, NgForm } from "@angular/forms";
 
 export class contact {
   firstName : string;
@@ -21,6 +21,7 @@ export class contact {
   styleUrls: ['./template-driven.component.scss']
 })
 export class TemplateDrivenComponent implements OnInit {
+  @ViewChild('contactForm') contactForm: NgForm;
 
   contact = new contact();
 
@@ -41,7 +42,11 @@ export class TemplateDrivenComponent implements OnInit {
       isMarried: false,
       country: "1",
       address: { city: "Tashkent", street: "Wide rng", pincode: "400050" }
-    }
+    };
+
+    setTimeout(() => {
+      this.contactForm.setValue(this.contact);
+    })
   }
 
   onSubmit(contactForm: NgForm) {
@@ -49,18 +54,31 @@ export class TemplateDrivenComponent implements OnInit {
   }
 
   setDefaults() {
-    this.contact = {
-      firstName: "Akbar",
-      lastName: "Karshiev",
-      email: "mail@gmail.com",
-      gender: "male",
-      isMarried: false,
-      country: "1",
-      address: { city: "Tashkent", street: "Wide rng", pincode: "400050" }
-    }
+    this.contactForm.setValue(this.contact);
   }
 
-  reset(contactForm: NgForm) {
-    contactForm.resetForm();
+  reset() {
+    this.contactForm.resetForm();
+  }
+
+  patchValue() {
+    let obj = {
+      firstName: "Test",
+      lastName: "Playboy",
+      email: "emaill@gmail.com",
+    };
+
+    this.contactForm.control.patchValue(obj);
+  }
+
+  changeAddress() {
+    let obj = {
+      city: "Bangalore",
+      street: "Brigade Road",
+      pincode: "600100"
+    };
+    let address= this.contactForm.controls["address"] as FormGroup;
+    address.patchValue(obj);
+
   }
 }
