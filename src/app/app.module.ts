@@ -10,7 +10,6 @@ import { StoreModule } from "@ngrx/store";
 import { EffectsModule } from "@ngrx/effects";
 import { HttpClientModule } from '@angular/common/http';
 import { StoreDevtoolsModule } from "@ngrx/store-devtools";
-import { FormsModule } from "@angular/forms";
 
 import * as fromApp from './store/app.reducer';
 import { appEffects } from './store/app.effects';
@@ -26,6 +25,8 @@ import { DirectivesModule } from "./directives/directives.module";
 import { PipesModule } from "./pipes/pipes.module";
 import { ComponentCommunicationModule } from "./component-communication/component-communication.module";
 import { ComponentLifecycleHooksModule } from "./component-lifecycle-hooks/component-lifecycle-hooks.module";
+import { AngularFormsModule } from "./angular-forms/forms.module";
+import { FormsModule } from "@angular/forms";
 
 
 @NgModule({
@@ -41,6 +42,7 @@ import { ComponentLifecycleHooksModule } from "./component-lifecycle-hooks/compo
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    FormsModule,
     CommonModule,
     SwiperModule,
     RouterModule,
@@ -51,11 +53,11 @@ import { ComponentLifecycleHooksModule } from "./component-lifecycle-hooks/compo
       logOnly: environment.production
     }),
     EffectsModule.forRoot(appEffects),
-    FormsModule,
     DirectivesModule,
     PipesModule,
     ComponentCommunicationModule,
     ComponentLifecycleHooksModule,
+    AngularFormsModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ApiInterceptorService, multi: true },
