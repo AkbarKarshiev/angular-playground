@@ -2,7 +2,7 @@
 <form #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm)">
   <p>
     <label for="firstName" class="mr-1">First Name</label>
-    <input type="text" id="firstName" name="firstName" #fname="ngModel" ngModel>
+    <input type="text" id="firstName" name="firstName" #fname="ngModel" [(ngModel)]="contact.firstName">
   </p>
   <pre>Value: {{ fname.value }}</pre>
   <pre>valid: {{ fname.valid }}</pre>
@@ -11,27 +11,27 @@
 
   <p>
     <label for="lastName" class="mr-1">Last Name</label>
-    <input type="text" id="lastName" name="lastName" ngModel>
+    <input type="text" id="lastName" name="lastName" [(ngModel)]="contact.lastName">
   </p>
 
   <p>
     <label for="email" class="mr-1">Email </label>
-    <input type="text" id="email" name="email" ngModel>
+    <input type="text" id="email" name="email" [(ngModel)]="contact.email">
   </p>
 
   <p>
     <label for="male" class="mr-1">Male</label>
-    <input type="radio" id="male" value="male" class="mr-1" name="gender" ngModel>
+    <input type="radio" id="male" value="male" class="mr-1" name="gender" [(ngModel)]="contact.gender">
     <label for="female" class="mr-1">Female</label>
-    <input type="radio" id="female" value="female" name="female" ngModel>
+    <input type="radio" id="female" value="female" name="female" [(ngModel)]="contact.gender">
   </p>
 
   <p>
     <label for="isMarried" class="mr-1">Married</label>
-    <input type="checkbox" id="isMarried" name="isMarried" ngModel>
+    <input type="checkbox" id="isMarried" name="isMarried" [(ngModel)]="contact.isMarried">
   </p>
 
-  <select name="country" ngModel class="mb-2">
+  <select name="country" [(ngModel)]="contact.country" class="mb-2">
     <option [ngValue]="c.id" *ngFor="let c of countryList">
       {{c.name}}
     </option>
@@ -40,21 +40,28 @@
   <div ngModelGroup="address">
     <p>
       <label for="city" class="mr-1">City</label>
-      <input type="text" id="city" name="city" ngModel>
+      <input type="text" id="city" name="city" [(ngModel)]="contact.address.city">
     </p>
 
     <p>
       <label for="street" class="mr-1">Street </label>
-      <input type="text" id="street" name="street" ngModel>
+      <input type="text" id="street" name="street" [(ngModel)]="contact.address.street">
     </p>
 
     <p>
       <label for="pincode" class="mr-1">Pin Code </label>
-      <input type="text" id="pincode" name="pincode" ngModel>
+      <input type="text" id="pincode" name="pincode" [(ngModel)]="contact.address.pincode">
     </p>
   </div>
 
   <p>
-    <button type="submit">Submit</button>
+    <button type="submit" class="mr-1">Submit</button>
+    <button type="submit" class="mr-1" (click)="setDefaults()">Set Defaults</button>
+    <button type="button" (click)="reset(contactForm)">Reset</button>
   </p>
+
+  <pre>
+    formValue:
+    {{ contactForm.value | json }}
+  </pre>
 </form>
