@@ -1,1 +1,65 @@
-<p>reactive-forms works!</p>
+<h2>Reactive(Model-driven) forms</h2>
+<form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+  <p>
+    <label for="firstName" class="mr-1">First Name</label>
+    <input type="text" id="firstName" name="firstName" formControlName="firstName">
+  </p>
+
+  <p>
+    <label for="lastName" class="mr-1">Last Name</label>
+    <input type="text" id="lastName" name="lastName" formControlName="lastName">
+  </p>
+
+  <p>
+    <label for="email" class="mr-1">Email </label>
+    <input type="text" id="email" name="email" formControlName="email">
+  </p>
+
+  <p>
+    <label for="male" class="mr-1">Male</label>
+    <input type="radio" id="male" value="male" class="mr-1" name="gender" formControlName="gender">
+    <label for="female" class="mr-1">Female</label>
+    <input type="radio" id="female" value="female" name="gender" formControlName="gender">
+  </p>
+
+  <p>
+    <label for="isMarried" class="mr-1">Married</label>
+    <input type="checkbox" id="isMarried" name="isMarried" formControlName="isMarried">
+  </p>
+
+  <select name="country" class="mb-2" formControlName="country">
+    <option [ngValue]="c.id" *ngFor="let c of countryList">
+      {{c.name}}
+    </option>
+  </select>
+
+  <div formGroupName="address">
+    <p>
+      <label for="city" class="mr-1">City</label>
+      <input type="text" id="city" name="city" formControlName="city">
+    </p>
+
+    <p>
+      <label for="street" class="mr-1">Street </label>
+      <input type="text" id="street" name="street" formControlName="street">
+    </p>
+
+    <p>
+      <label for="pinCode" class="mr-1">Pin Code </label>
+      <input type="text" id="pinCode" name="pinCode" formControlName="pinCode">
+    </p>
+  </div>
+  <p>
+    <button type="submit" class="mr-1">Submit</button>
+<!--    <button type="submit" class="mr-1" (click)="setDefaults()">Set Defaults</button>-->
+<!--    <button type="submit" class="mr-1" (click)="patchValue()">Patch Value</button>-->
+<!--    <button type="submit" class="mr-1" (click)="changeAddress()">Change Address</button>-->
+<!--    <button type="button" (click)="reset()">Reset</button>-->
+  </p>
+
+  <pre>
+<!--    formValue:-->
+    {{ contactForm.value | json }}
+  </pre>
+</form>
+
