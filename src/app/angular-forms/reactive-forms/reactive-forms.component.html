@@ -5,6 +5,21 @@
     <input type="text" id="firstName" name="firstName" formControlName="firstName">
   </p>
 
+  <div
+    *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)"
+    class="mb-2"
+  >
+    <div [hidden]="!firstName.errors?.required">
+      First Name is required
+    </div>
+    <div [hidden]="!firstName.errors?.minlength">
+      Min Length is {{ firstName.errors?.minlength?.requiredLength }}
+    </div>
+    <div [hidden]="!firstName.errors?.maxlength">
+      Max Length is {{ firstName.errors?.maxlength ?.requiredLength }}
+    </div>
+  </div>
+
   <p>
     <label for="lastName" class="mr-1">Last Name</label>
     <input type="text" id="lastName" name="lastName" formControlName="lastName">
@@ -15,6 +30,18 @@
     <input type="text" id="email" name="email" formControlName="email">
   </p>
 
+  <div
+    *ngIf="email.invalid && (email.dirty || email.touched)"
+    class="mb-2"
+  >
+    <div [hidden]="!email.errors?.required">
+      Email is required
+    </div>
+    <div [hidden]="!email.errors?.email">
+      Invalid email
+    </div>
+  </div>
+
   <p>
     <label for="male" class="mr-1">Male</label>
     <input type="radio" id="male" value="male" class="mr-1" name="gender" formControlName="gender">
@@ -22,10 +49,25 @@
     <input type="radio" id="female" value="female" name="gender" formControlName="gender">
   </p>
 
+  <div
+    *ngIf="gender.invalid && (gender.dirty || gender.touched)"
+    class="mb-2"
+  >
+    <div [hidden]="!gender.errors?.required">
+      Gender is required
+    </div>
+  </div>
+
   <p>
     <label for="isMarried" class="mr-1">Married</label>
     <input type="checkbox" id="isMarried" name="isMarried" formControlName="isMarried">
   </p>
+
+  <div *ngIf="!isMarried.valid && (isMarried.dirty ||isMarried.touched)">
+    <div [hidden]="!isMarried.errors.required">
+      isMarried is required
+    </div>
+  </div>
 
   <select name="country" class="mb-2" formControlName="country">
     <option [ngValue]="c.id" *ngFor="let c of countryList">
@@ -33,21 +75,46 @@
     </option>
   </select>
 
+  <div *ngIf="!country.valid && (country.dirty ||country.touched)">
+    <div [hidden]="!country.errors.required">
+      country is required
+    </div>
+  </div>
+
   <div formGroupName="address">
     <p>
       <label for="city" class="mr-1">City</label>
       <input type="text" id="city" name="city" formControlName="city">
     </p>
 
+    <div *ngIf="!city.valid && (city.dirty ||city.touched)">
+      <div [hidden]="!city.errors.required">
+        city is required
+      </div>
+    </div>
+
     <p>
       <label for="street" class="mr-1">Street </label>
       <input type="text" id="street" name="street" formControlName="street">
     </p>
 
+    <div *ngIf="!street.valid && (street.dirty ||street.touched)">
+      <div [hidden]="!street.errors.required">
+        street is required
+      </div>
+    </div>
+
     <p>
       <label for="pinCode" class="mr-1">Pin Code </label>
       <input type="text" id="pinCode" name="pinCode" formControlName="pinCode">
     </p>
+
+    <div *ngIf="!pinCode.valid && (pinCode.dirty ||pinCode.touched)">
+      <div [hidden]="!pinCode.errors.required">
+        pinCode is required
+      </div>
+    </div>
+
   </div>
   <p>
     <button type="submit" class="mr-1">Submit</button>
