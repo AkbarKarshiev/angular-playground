@@ -118,10 +118,21 @@
   </div>
   <p>
     <button type="submit" class="mr-1">Submit</button>
-<!--    <button type="submit" class="mr-1" (click)="setDefaults()">Set Defaults</button>-->
-<!--    <button type="submit" class="mr-1" (click)="patchValue()">Patch Value</button>-->
-<!--    <button type="submit" class="mr-1" (click)="changeAddress()">Change Address</button>-->
-<!--    <button type="button" (click)="reset()">Reset</button>-->
+    <button type="button" class="mr-1" (click)="setFirstNameWithOnlySelf()">Set firstName with onlySelf</button>
+    <button type="button" class="mr-1" (click)="setFirstNameWithEmitEventFalse()">Set firstName with emitEvent false</button>
+    <button type="button" class="mr-1" (click)="markFirstNameAsTouched()">Mark firstName as touched</button>
+    <button type="button" class="mr-1" (click)="markFirstNameAsDirty()">Mark firstName as dirty</button>
+    <button type="button" class="mr-1" (click)="markFirstNameAsPristine()">Mark firstName as pristine</button>
+    <button type="button" class="mr-1" (click)="markFirstNameAsPending()">Mark firstName as pending</button>
+    <button type="button" class="mr-1" (click)="disableFirstName()">Disable firstName</button>
+    <button type="button" class="mr-1" (click)="enableFirstName()">Enable firstName</button>
+    <button type="button" class="mr-1" (click)="updateValueAndValidityOfFirstName()">UpdateValueAndValidity of firstName</button>
+    <button type="button" class="mr-1" (click)="updateValueAndValidityOfForm()">UpdateValueAndValidity of form</button>
+    <button type="button" class="mr-1" (click)="setFirstNameValidators()">Set validators firstName</button>
+    <button type="button" class="mr-1" (click)="clearFirstNameValidators()">Clear validators firstName</button>
+    <button type="button" class="mr-1" (click)="getFirstNameErrors()">Get firstName errors</button>
+    <button type="button" class="mr-1" (click)="getFirstNameError()">Get firstName error</button>
+    <button type="button" class="mr-1" (click)="hasFirstNameError()">Has firstName error</button>
   </p>
 
   <pre>

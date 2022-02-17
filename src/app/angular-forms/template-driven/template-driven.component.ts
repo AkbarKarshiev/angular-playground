@@ -34,18 +34,37 @@ export class TemplateDrivenComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.contact = {
-      firstName: "Akbar",
-      lastName: "Karshiev",
-      email: "mail@gmail.com",
-      gender: "male",
-      isMarried: false,
-      country: "1",
-      address: { city: "Tashkent", street: "Wide rng", pincode: "400050" }
-    };
+    // this.contact = {
+    //   firstName: "Akbar",
+    //   lastName: "Karshiev",
+    //   email: "mail@gmail.com",
+    //   gender: "male",
+    //   isMarried: false,
+    //   country: "1",
+    //   address: { city: "Tashkent", street: "Wide rng", pincode: "400050" }
+    // };
+    //
+    // setTimeout(() => {
+    //   this.contactForm.setValue(this.contact);
+    // })
 
     setTimeout(() => {
-      this.contactForm.setValue(this.contact);
+      this.contactForm.control.get('firstName').valueChanges.subscribe(selectedValue => {
+        console.log('firstName value changed')
+        console.log(selectedValue)
+        console.log(this.contactForm.control.get("firstName").value)
+        console.log(this.contactForm.control.value)
+
+        this.contactForm.control.get("address").valueChanges.subscribe(selectedValue => {
+          console.log('address changed')
+          console.log(selectedValue)
+        })
+
+        this.contactForm.valueChanges.subscribe(selectedValue => {
+          console.log('form value changed')
+          console.log(selectedValue)
+        })
+      });
     })
   }
 

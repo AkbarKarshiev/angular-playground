@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
+import { FormBuilder, FormControl, FormGroup, ValidationErrors, Validators } from "@angular/forms";
 
 @Component({
   selector: 'app-reactive-forms',
@@ -14,8 +14,8 @@ export class ReactiveFormsComponent implements OnInit {
   ]
 
   // contactForm = new FormGroup({
-  //   firstName: new FormControl({ value: 'Akbar', disabled: true}),
-  //   lastName: new FormControl('', [Validators.required, Validators.minLength(10)]),
+  //   firstName: new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(15)]),
+  //   lastName: new FormControl({ value: 'Akbar', disabled: true}),
   //   email: new FormControl(),
   //   gender: new FormControl(),
   //   isMarried: new FormControl(),
@@ -25,7 +25,7 @@ export class ReactiveFormsComponent implements OnInit {
   //     street: new FormControl(),
   //     pinCode: new FormControl()
   //   })
-  // })
+  // });
 
   contactForm = this.formBuilder.group({
     firstName: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(15)]],
@@ -46,6 +46,17 @@ export class ReactiveFormsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.contactForm.get("firstName").statusChanges.subscribe(newStatus=> {
+      console.log('firstname status changed')
+      console.log(newStatus)                                   //latest status
+      console.log(this.contactForm.get("firstName").status)  //latest status
+      console.log(this.contactForm.status)                   //Previous status
+    });
+
+    this.contactForm.statusChanges.subscribe(newStatus=> {
+      console.log(this.contactForm)
+      console.log('ContactFormStatus: ', newStatus)                                   //latest status
+    })
   }
 
   get firstName() {
@@ -84,8 +95,75 @@ export class ReactiveFormsComponent implements OnInit {
     return this.contactForm.get("address").get('pinCode');
   }
 
-  onSubmit() {
-    console.log(this.contactForm.controls);
+  setFirstNameWithOnlySelf() {
+    this.contactForm.get('firstName').setValue('test', {onlySelf: true})
+  }
 
+  setFirstNameWithEmitEventFalse() {
+    this.contactForm.get('firstName').setValue('testasdfasdf', {emitEvent: false})
+  }
+
+  markFirstNameAsTouched() {
+    this.contactForm.get('firstName').markAsTouched();
+  }
+
+  markFirstNameAsDirty() {
+    this.contactForm.get('firstName').markAsDirty();
+  }
+
+  markFirstNameAsPristine() {
+    this.contactForm.get('firstName').markAsPristine();
+  }
+
+  markFirstNameAsPending() {
+    // emits event thus you can set eventEmit option in arguments
+    this.contactForm.get('firstName').markAsPending();
+  }
+
+  disableFirstName() {
+    // emits event thus you can set eventEmit option in arguments
+    this.contactForm.get('firstName').disable();
+  }
+
+  enableFirstName() {
+    // emits event thus you can set eventEmit option in arguments
+    this.contactForm.get('firstName').enable();
+  }
+
+  updateValueAndValidityOfFirstName() {
+    // emits event thus you can set eventEmit option in arguments
+    this.contactForm.get('firstName').updateValueAndValidity();
+  }
+
+  updateValueAndValidityOfForm() {
+    // emits event thus you can set eventEmit option in arguments
+    this.contactForm.updateValueAndValidity();
+  }
+
+  setFirstNameValidators() {
+    this.contactForm.get('firstName').setValidators([Validators.required]);
+    this.contactForm.get('firstName').updateValueAndValidity();
+  }
+
+  clearFirstNameValidators() {
+    this.contactForm.get('firstName').clearValidators();
+    this.contactForm.get('firstName').updateValueAndValidity();
+  }
+
+  getFirstNameErrors() {
+    const controlErrors: ValidationErrors = this.contactForm.get('firstName').errors;
+    console.log(controlErrors)
+  }
+
+  getFirstNameError() {
+    console.log(this.contactForm.get('firstName').getError('required'));
+  }
+
+  hasFirstNameError() {
+    console.log(this.contactForm.get('firstName').hasError('required'));
+  }
+
+  onSubmit() {
+    console.log(this.contactForm);
   }
 }
