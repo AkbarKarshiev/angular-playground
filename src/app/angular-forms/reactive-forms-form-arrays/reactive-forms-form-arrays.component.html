@@ -1,0 +1,80 @@
+<h2>Form Arrays in Reactive(Model-driven) forms</h2>
+<form [formGroup]="skillsForm" (ngSubmit)="onSubmit()">
+  <p>
+    <label for="name">Name</label>
+    <input type="text" id="name" name="name" formControlName="name">
+  </p>
+
+  Skills:
+  <div formArrayName="skills">
+    <div *ngFor="let skill of skills.controls; let i = index">
+      <div [formGroupName]="i">
+        {{ i }}
+        <label for="skill-{{ i }}">skill name:</label>
+        <input type="text" id="skill-{{ i }}" formControlName="skill">
+        <label for="exp-{{ i }}">exp:</label>
+        <input type="text" id="exp-{{ i }}" formControlName="exp">
+
+        <button (click)="removeSkill(i)" type="button">Remove</button>
+      </div>
+    </div>
+  </div>
+
+  <p>
+    <button type="submit">Submit</button>
+  </p>
+</form>
+
+<p>
+  <button (click)="addSkills()" type="button">Add</button>
+</p>
+
+<pre>
+  {{ skillsForm.value | json }}
+</pre>
+
+<div class="mb-3"></div>
+
+<h2>Angular Nested FormArray / Dynamic FormArray</h2>
+<form [formGroup]="empForm" (ngSubmit)="onSubmitEmployee()">
+  <div formArrayName="employees">
+    <div *ngFor="let employee of employees.controls; let employeeIndex = index">
+      <div
+        [formGroupName]="employeeIndex"
+        style="border: 1px solid blue; padding: 10px; width: 600px; margin: 5px;"
+      >
+        {{ employeeIndex }}
+        <label for="firstName">First name:</label>
+        <input type="text" id="firstName" formControlName="firstName">
+        <label for="lastName">Last name:</label>
+        <input type="text" id="lastName" formControlName="lastName">
+        <button type="button" (click)="removeEmployee(employeeIndex)">Remove</button>
+
+        <div formArrayName="skills">
+          <div *ngFor="let skill of employeeSkills(employeeIndex).controls; let skillIndex = index">
+            <div [formGroupName]="skillIndex">
+              {{ skillIndex }}
+              <label for="skill-{{ skillIndex }}">skill name:</label>
+              <input type="text" id="skill-{{ skillIndex }}" formControlName="skill">
+              <label for="exp-{{ skillIndex }}">exp:</label>
+              <input type="text" id="exp-{{ skillIndex }}" formControlName="exp">
+
+              <button (click)="removeEmployeeSkill(employeeIndex, skillIndex)" type="button">Remove</button>
+            </div>
+          </div>
+        </div>
+        <button type="button" (click)="addEmployeeSkill(employeeIndex)">Add skill</button>
+      </div>
+    </div>
+
+    <button type="button" (click)="addEmployee()">Add Employee</button>
+  </div>
+
+  <button type="submit">Submit</button>
+</form>
+
+<pre>
+  {{ empForm.value | json }}
+</pre>
+
+

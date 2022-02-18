@@ -5,12 +5,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularFormsComponent } from './angular-forms.component';
 import { TemplateDrivenComponent } from './template-driven/template-driven.component';
 import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component';
+import { ReactiveFormsFormArraysComponent } from './reactive-forms-form-arrays/reactive-forms-form-arrays.component';
 
 @NgModule({
   declarations: [
     AngularFormsComponent,
     TemplateDrivenComponent,
-    ReactiveFormsComponent
+    ReactiveFormsComponent,
+    ReactiveFormsFormArraysComponent
   ],
   exports: [
     AngularFormsComponent
