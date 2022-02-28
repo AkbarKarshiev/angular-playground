@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup } from "@angular/forms";
+import { FormArray, FormBuilder, FormGroup, Validators } from "@angular/forms";
 
 @Component({
   selector: 'app-reactive-forms-form-arrays',
@@ -14,7 +14,7 @@ export class ReactiveFormsFormArraysComponent {
     private fb: FormBuilder
   ) {
     this.skillsForm = this.fb.group({
-      name: '',
+      name: ['', [Validators.required]],
       skills: this.fb.array([])
     });
 
