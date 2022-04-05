@@ -70,6 +70,7 @@ export class TemplateDrivenComponent implements OnInit {
 
   onSubmit(contactForm: NgForm) {
     console.log(contactForm.value);
+    console.log(contactForm);
   }
 
   setDefaults() {
