@@ -27,6 +27,7 @@ import { ComponentCommunicationModule } from "./component-communication/componen
 import { ComponentLifecycleHooksModule } from "./component-lifecycle-hooks/component-lifecycle-hooks.module";
 import { AngularFormsModule } from "./angular-forms/forms.module";
 import { FormsModule } from "@angular/forms";
+import { DependencyInjectionModule } from "./dependency-injection/dependency-injection.module";
 
 
 @NgModule({
@@ -38,27 +39,28 @@ import { FormsModule } from "@angular/forms";
     CounterTestComponent,
     CounterNameComponent
   ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    HttpClientModule,
-    FormsModule,
-    CommonModule,
-    SwiperModule,
-    RouterModule,
-    CarouselModule,
-    StoreModule.forRoot(fromApp.appReducer),
-    StoreDevtoolsModule.instrument({
-      maxAge: 25,
-      logOnly: environment.production
-    }),
-    EffectsModule.forRoot(appEffects),
-    DirectivesModule,
-    PipesModule,
-    ComponentCommunicationModule,
-    ComponentLifecycleHooksModule,
-    AngularFormsModule,
-  ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        HttpClientModule,
+        FormsModule,
+        CommonModule,
+        SwiperModule,
+        RouterModule,
+        CarouselModule,
+        StoreModule.forRoot(fromApp.appReducer),
+        StoreDevtoolsModule.instrument({
+            maxAge: 25,
+            logOnly: environment.production
+        }),
+        EffectsModule.forRoot(appEffects),
+        DirectivesModule,
+        PipesModule,
+        ComponentCommunicationModule,
+        ComponentLifecycleHooksModule,
+        AngularFormsModule,
+        DependencyInjectionModule,
+    ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ApiInterceptorService, multi: true },
   ],
