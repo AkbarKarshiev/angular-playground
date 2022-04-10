@@ -1,4 +1,4 @@
-import { Component, OnInit, Optional, Self } from '@angular/core';
+import { Component, OnInit, Optional, Self, SkipSelf } from '@angular/core';
 import { RandomService } from "../../services/random.service";
 
 @Component({
@@ -10,7 +10,7 @@ import { RandomService } from "../../services/random.service";
 export class GrandChildComponent implements OnInit {
   randomNo;
 
-  constructor(@Self() private randomService: RandomService) {
+  constructor(@SkipSelf() private randomService: RandomService) {
     this.randomNo = this.randomService?.RandomNo;
   }
 
