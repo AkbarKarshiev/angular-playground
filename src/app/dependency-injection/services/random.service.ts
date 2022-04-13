@@ -1,13 +1,18 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable, Optional } from '@angular/core';
+import { TEST_VAL, TestInterface, TestInterfaceVal } from "../test/test.interface";
 
 @Injectable({
   providedIn: 'root'
 })
 export class RandomService {
   private _randomNo = 0;
-
-  constructor() {
+  private readonly testVal: TestInterface;
+  constructor(
+    @Optional() @Inject(TEST_VAL) testVal: TestInterface | null
+  ) {
     console.log("RandomService Constructed");
+    this.testVal = testVal ?? TestInterfaceVal;
+    console.log(this.testVal);
     this._randomNo = Math.floor(Math.random() * 1000 + 1);
   }
 
