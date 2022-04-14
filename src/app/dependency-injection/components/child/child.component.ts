@@ -4,7 +4,8 @@ import { RandomService } from "../../services/random.service";
 @Component({
   selector: 'app-child',
   templateUrl: './child.component.html',
-  styleUrls: ['./child.component.scss']
+  styleUrls: ['./child.component.scss'],
+  viewProviders: [RandomService]
 })
 export class ChildComponent implements OnInit {
   randomNo;
