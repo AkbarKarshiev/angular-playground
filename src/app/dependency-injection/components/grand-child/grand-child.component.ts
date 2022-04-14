@@ -9,7 +9,7 @@ import { RandomService } from "../../services/random.service";
 export class GrandChildComponent implements OnInit {
   randomNo;
 
-  constructor(@Host() private randomService: RandomService) {
+  constructor(@Optional() private randomService: RandomService) {
     this.randomNo = this.randomService?.RandomNo;
   }
 

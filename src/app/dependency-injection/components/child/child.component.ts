@@ -6,7 +6,7 @@ import { RandomService } from "../../services/random.service";
   templateUrl: './child.component.html',
   styleUrls: ['./child.component.scss'],
   // providers: [RandomService],
-  // viewProviders: [RandomService],
+  viewProviders: [RandomService],
 })
 export class ChildComponent implements OnInit {
   randomNo;
