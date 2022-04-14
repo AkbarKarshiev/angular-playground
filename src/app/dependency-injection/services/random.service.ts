@@ -12,7 +12,6 @@ export class RandomService {
   ) {
     console.log("RandomService Constructed");
     this.testVal = testVal ?? TestInterfaceVal;
-    console.log(this.testVal);
     this._randomNo = Math.floor(Math.random() * 1000 + 1);
   }
 
