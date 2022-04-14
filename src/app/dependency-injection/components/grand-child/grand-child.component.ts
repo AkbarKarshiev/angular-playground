@@ -5,8 +5,6 @@ import { RandomService } from "../../services/random.service";
   selector: 'app-grand-child',
   templateUrl: './grand-child.component.html',
   styleUrls: ['./grand-child.component.scss'],
-  providers: [],
-  viewProviders: [RandomService]
 })
 export class GrandChildComponent implements OnInit {
   randomNo;
