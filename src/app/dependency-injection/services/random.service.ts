@@ -10,9 +10,9 @@ export class RandomService {
   constructor(
     @Optional() @Inject(TEST_VAL) testVal: TestInterface | null
   ) {
-    console.log("RandomService Constructed");
     this.testVal = testVal ?? TestInterfaceVal;
     this._randomNo = Math.floor(Math.random() * 1000 + 1);
+    console.log("RandomService Constructed with val: " + this._randomNo);
   }
 
   get RandomNo() {
