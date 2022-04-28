@@ -1,4 +1,10 @@
 <h4>Child component</h4>
 
-<ng-container *ngTemplateOutlet="customTemplate">
-</ng-container>
+<ng-template *ngTemplateOutlet="customTemplate">
+</ng-template>
+
+<ng-template #parentTemplate>
+    <ng-content></ng-content>
+</ng-template>
+
+<ng-template [ngTemplateOutlet]="parentTemplate"></ng-template>
