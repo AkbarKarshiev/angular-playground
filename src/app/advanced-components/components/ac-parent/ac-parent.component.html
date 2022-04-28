@@ -1,0 +1,10 @@
+<h3>Passing Template to a Child Component</h3>
+<h4>Parent Component</h4>
+<p>Some text in parent component</p>
+<ng-template #parentTemplate>
+    <p>
+        This Template is defined in Parent.
+        We will send it to child component
+    </p>
+</ng-template>
+<app-ac-child [customTemplate]="parentTemplate"></app-ac-child>
