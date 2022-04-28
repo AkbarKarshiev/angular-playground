@@ -10,6 +10,7 @@ import { CustomAttributeDirectiveDirective } from './custom-directives/custom-at
 import { CustomStructuralDirectiveDirective } from './custom-directives/custom-structural-directive.directive';
 import { CustomToggleDirectiveDirective } from './custom-directives/custom-toggle-directive.directive';
 import { CustomTooltipDirectiveDirective } from './custom-directives/custom-tooltip-directive.directive';
+import { CustomIfDirectiveDirective } from './custom-directives/custom-if-directive.directive';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { CustomTooltipDirectiveDirective } from './custom-directives/custom-tool
     CustomStructuralDirectiveDirective,
     CustomToggleDirectiveDirective,
     CustomTooltipDirectiveDirective,
+    CustomIfDirectiveDirective,
   ],
   imports: [
     CommonModule,
@@ -28,6 +30,8 @@ import { CustomTooltipDirectiveDirective } from './custom-directives/custom-tool
   ],
   exports: [
     DirectivesComponent,
+    CustomIfDirectiveDirective,
+    CustomStructuralDirectiveDirective
   ]
 })
 export class DirectivesModule { }

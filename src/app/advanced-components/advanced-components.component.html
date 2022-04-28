@@ -1,0 +1,31 @@
+<div class="container">
+    <h1>Advanced Components</h1>
+    <h2>ng-template & TemplateRef</h2>
+    <h3 #testHeading>Using the ngTemplateOutlet</h3>
+    <ng-template #sayHelloTemplate>
+        <p> Say Hello </p>
+    </ng-template>
+    <ng-container *ngTemplateOutlet="sayHelloTemplate">
+        asdf
+    </ng-container>
+
+    <div *appCustomStructuralDirective="selected">
+        Using the *appCustomIfDirective="" directive via *appCustomIfDirective=""
+    </div>
+
+    <ng-template [appCustomStructuralDirective]="selected">
+        <div id="etet">
+            <p>Using the appTestIf directive via ng-template</p>
+        </div>
+    </ng-template>
+    <ng-template>
+        <div id="test">
+            <p>Using the appTestIf directive via ng-template</p>
+        </div>
+    </ng-template>
+
+    <ng-template let-value="value" let-name let-mam #messageTemplate>
+        <p>Value Received from the Parent is  {{ value }} {{ name }}</p>
+    </ng-template>
+    <ng-container *ngTemplateOutlet="messageTemplate; context: {value: 100, $implicit: 'test'}"></ng-container>
+</div>
