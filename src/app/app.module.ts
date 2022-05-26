@@ -29,6 +29,7 @@ import { AngularFormsModule } from "./angular-forms/forms.module";
 import { FormsModule } from "@angular/forms";
 import { DependencyInjectionModule } from "./dependency-injection/dependency-injection.module";
 import { AdvancedComponentsModule } from "./advanced-components/advanced-components.module";
+import { ChangeDetectionModule } from "./change-detection/change-detection.module";
 
 
 @NgModule({
@@ -62,6 +63,7 @@ import { AdvancedComponentsModule } from "./advanced-components/advanced-compone
     AngularFormsModule,
     DependencyInjectionModule,
     AdvancedComponentsModule,
+    ChangeDetectionModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ApiInterceptorService, multi: true },
