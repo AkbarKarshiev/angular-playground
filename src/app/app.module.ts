@@ -30,6 +30,7 @@ import { FormsModule } from "@angular/forms";
 import { DependencyInjectionModule } from "./dependency-injection/dependency-injection.module";
 import { AdvancedComponentsModule } from "./advanced-components/advanced-components.module";
 import { ChangeDetectionModule } from "./change-detection/change-detection.module";
+import { WebcameraTestModule } from "./webcamera-test/webcamera-test.module";
 
 
 @NgModule({
@@ -41,30 +42,31 @@ import { ChangeDetectionModule } from "./change-detection/change-detection.modul
     CounterTestComponent,
     CounterNameComponent
   ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    HttpClientModule,
-    FormsModule,
-    CommonModule,
-    SwiperModule,
-    RouterModule,
-    CarouselModule,
-    StoreModule.forRoot(fromApp.appReducer),
-    StoreDevtoolsModule.instrument({
-      maxAge: 25,
-      logOnly: environment.production
-    }),
-    EffectsModule.forRoot(appEffects),
-    DirectivesModule,
-    PipesModule,
-    ComponentCommunicationModule,
-    ComponentLifecycleHooksModule,
-    AngularFormsModule,
-    DependencyInjectionModule,
-    AdvancedComponentsModule,
-    ChangeDetectionModule,
-  ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        HttpClientModule,
+        FormsModule,
+        CommonModule,
+        SwiperModule,
+        RouterModule,
+        CarouselModule,
+        StoreModule.forRoot(fromApp.appReducer),
+        StoreDevtoolsModule.instrument({
+            maxAge: 25,
+            logOnly: environment.production
+        }),
+        EffectsModule.forRoot(appEffects),
+        DirectivesModule,
+        PipesModule,
+        ComponentCommunicationModule,
+        ComponentLifecycleHooksModule,
+        AngularFormsModule,
+        DependencyInjectionModule,
+        AdvancedComponentsModule,
+        ChangeDetectionModule,
+        WebcameraTestModule,
+    ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ApiInterceptorService, multi: true },
   ],
