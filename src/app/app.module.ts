@@ -30,6 +30,8 @@ import { FormsModule } from "@angular/forms";
 import { DependencyInjectionModule } from "./dependency-injection/dependency-injection.module";
 import { AdvancedComponentsModule } from "./advanced-components/advanced-components.module";
 import { ChangeDetectionModule } from "./change-detection/change-detection.module";
+import { WebCameraModule } from "./web-camera/web-camera.module";
+import { TestModule } from "./test/test.module";
 
 
 @NgModule({
@@ -64,6 +66,8 @@ import { ChangeDetectionModule } from "./change-detection/change-detection.modul
     DependencyInjectionModule,
     AdvancedComponentsModule,
     ChangeDetectionModule,
+    WebCameraModule,
+    TestModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ApiInterceptorService, multi: true },
