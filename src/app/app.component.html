@@ -21,8 +21,33 @@
 <!--</app-advanced-components>-->
 <!--<app-change-detection>-->
 <!--</app-change-detection>-->
-<app-web-cam></app-web-cam>
+<!--<app-web-cam></app-web-cam>-->
 
-<!--<app-test>-->
-<!--    asta-->
-<!--</app-test>-->
+<app-test>
+    <ng-container *ngIf="switchVal$ | async as switchVal" ngProjectAs="body">
+        <ng-container [ngSwitch]="switchVal">
+            <ng-container *ngSwitchCase="'a'">
+                Body content a
+                <ng-template appTestProjection>
+                    <div class="modal-header">
+                        Custom Header a
+                    </div>
+                </ng-template>
+            </ng-container>
+            <ng-container *ngSwitchCase="'b'">
+                Body content b
+                <ng-template appTestProjection>
+                    <div class="modal-header">
+                        Custom Header b
+                    </div>
+                </ng-template>
+            </ng-container>
+        </ng-container>
+    </ng-container>
+<!--    <p ngProjectAs="body">-->
+<!--    </p>-->
+
+</app-test>
+<button class="btn btn-primary" (click)="changeView()">
+    Change view
+</button>

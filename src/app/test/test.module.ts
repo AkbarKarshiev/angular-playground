@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TestComponent } from './test.component';
+import { TestProjectionDirective } from './test-projection.directive';
 
 @NgModule({
-  declarations: [TestComponent],
+  declarations: [TestComponent, TestProjectionDirective],
   imports: [
-    // CommonModule
+    CommonModule
   ],
-  exports: [TestComponent]
+  exports: [TestComponent, TestProjectionDirective]
 })
 export class TestModule { }

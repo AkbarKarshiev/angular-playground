@@ -1,15 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { BehaviorSubject } from "rxjs";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent implements OnInit {
   title = 'playground';
-
+  switchVal$ = new BehaviorSubject<'a' | 'b'>('a')
   ngOnInit() {
     this.someFunc();
+  }
+
+  changeView(): void {
+    const currVal = this.switchVal$.getValue();
+    if (currVal === 'a') {
+      this.switchVal$.next('b');
+    } else if (currVal === 'b') {
+      this.switchVal$.next('a');
+    }
   }
 
   someFunc() {

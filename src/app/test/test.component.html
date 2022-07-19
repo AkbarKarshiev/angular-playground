@@ -1,1 +1,9 @@
-<ng-content></ng-content>
+<ng-container *ngIf="content; else elseBlock" [ngTemplateOutlet]="content.templateRef"></ng-container>
+<ng-template #elseBlock>
+    <div class="modal-header">
+        Default Header
+    </div>
+</ng-template>
+<div class="modal-body">
+    <ng-content select="body"></ng-content>
+</div>
