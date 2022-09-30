@@ -5,7 +5,7 @@ import { CommonModule } from "@angular/common";
 import { SwiperModule } from 'swiper/angular';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { RouterModule } from '@angular/router';
-import { HTTP_INTERCEPTORS } from "@angular/common/http";
+import { HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
 import { StoreModule } from "@ngrx/store";
 import { EffectsModule } from "@ngrx/effects";
 import { HttpClientModule } from '@angular/common/http';
@@ -32,6 +32,9 @@ import { AdvancedComponentsModule } from "./advanced-components/advanced-compone
 import { ChangeDetectionModule } from "./change-detection/change-detection.module";
 import { WebCameraModule } from "./web-camera/web-camera.module";
 import { TestModule } from "./test/test.module";
+import { OfflineStatusHandlingModule } from './offline-status-handling/offline-status-handling.module';
+import { applicationHttpClientCreator, ExtendedHttpService } from './offline-status-handling/services/extended-http.service';
+import { OfflineInterceptorService } from './offline-status-handling/services/offline-interceptor.service';
 
 
 @NgModule({
@@ -68,9 +71,11 @@ import { TestModule } from "./test/test.module";
     ChangeDetectionModule,
     WebCameraModule,
     TestModule,
+    OfflineStatusHandlingModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ApiInterceptorService, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: OfflineInterceptorService, multi: true },
   ],
   bootstrap: [AppComponent]
 })
